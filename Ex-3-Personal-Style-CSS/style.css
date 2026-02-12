@@ -1,0 +1,279 @@
+/* =========================================
+   1. GLOBAL RESET & BASIC STYLES
+   ========================================= */
+
+/* The asterisk (*) selects ALL elements on the page */
+* {
+    margin: 0;        /* Removes default outer spacing */
+    padding: 0;       /* Removes default inner spacing */
+    box-sizing: border-box; /* Ensures padding doesn't increase element width */
+}
+
+/* Body: The main container of the visible page */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Professional, clean font stack */
+    background-color: #f4f6f8; /* Light greyish-blue background for a modern look */
+    color: #333;               /* Dark grey text for good readability */
+    line-height: 1.6;          /* Increases space between lines of text */
+}
+
+/* Hyperlinks (a tags) global style */
+a {
+    text-decoration: none; /* Removes the default underline from links */
+    transition: 0.3s;      /* Adds a smooth animation effect when hovering */
+}
+
+/* Horizontal Rule (hr) - the divider line */
+hr {
+    border: 0;              /* Removes default border */
+    height: 1px;            /* Sets thickness */
+    background: #ddd;       /* Light grey color */
+    margin: 40px 0;         /* Adds vertical spacing above and below */
+}
+
+/* =========================================
+   2. TOP NAVIGATION BAR (PREMIUM LOOK)
+   ========================================= */
+
+.navbar {
+    display: flex;             /* Enables Flexbox layout to align items in a row */
+    justify-content: space-between; /* Pushes Logo to left, Menu to right */
+    align-items: center;       /* Vertically centers items */
+    background-color: #1a252f; /* Dark Navy Blue background (Professional) */
+    padding: 20px 5%;          /* Top/Bottom padding 20px, Left/Right 5% */
+    position: sticky;          /* Keeps navbar at top when scrolling */
+    top: 0;                    /* Sticks to the very top */
+    z-index: 1000;             /* Ensures navbar stays on top of other content */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Adds a subtle shadow for depth */
+}
+
+/* Logo Styling */
+.logo {
+    color: #fff;           /* White text */
+    font-size: 24px;       /* Large text size */
+    font-weight: bold;     /* Bold text */
+    letter-spacing: 1px;   /* Slight spacing between letters */
+}
+
+/* Menu Links Styling */
+.menu a {
+    color: #bdc3c7;        /* Light grey text */
+    margin: 0 15px;        /* Spacing between links */
+    font-size: 16px;       /* Standard font size */
+    font-weight: 500;      /* Medium boldness */
+}
+
+/* Hover Effect for Menu */
+.menu a:hover {
+    color: #ffffff;        /* Turns white on hover */
+    text-shadow: 0 0 5px rgba(255,255,255,0.5); /* Glowing effect */
+}
+
+/* Active Page Style */
+.menu .active {
+    color: #3498db;        /* Bright Blue color for the current page */
+    border-bottom: 2px solid #3498db; /* Underline effect */
+    padding-bottom: 5px;   /* Space between text and underline */
+}
+
+/* Social Media Icons */
+.social a {
+    color: #fff;           /* White icon color */
+    margin-left: 15px;     /* Space between icons */
+    font-size: 18px;       /* Icon size */
+}
+
+.social a:hover {
+    color: #3498db;        /* Changes to blue on hover */
+    transform: translateY(-3px); /* Moves icon slightly up */
+}
+
+/* =========================================
+   3. MAIN LAYOUT CONTAINER
+   ========================================= */
+
+.about-container {
+    display: flex;         /* Puts Text and Image side-by-side */
+    justify-content: center; /* Centers the content horizontally */
+    align-items: center;   /* Centers the content vertically */
+    padding: 80px 10%;     /* Large padding for a spacious feel */
+    max-width: 1200px;     /* Restricts maximum width for large screens */
+    margin: 0 auto;        /* Centers the container itself */
+    gap: 50px;             /* Adds space between the text and image */
+}
+
+/* Left Side: Text Content */
+.about-text {
+    flex: 1;               /* Takes up available space (growable) */
+}
+
+/* Main Headings (H1) */
+.about-text h1 {
+    font-size: 48px;       /* Very large text */
+    color: #2c3e50;        /* Dark Blue-Grey */
+    margin-bottom: 20px;   /* Space below heading */
+}
+
+/* Sub-headings (H2) */
+.about-text h2 {
+    font-size: 24px;       /* Medium large text */
+    color: #34495e;        /* Slightly lighter blue-grey */
+    margin-top: 30px;      /* Space above */
+    margin-bottom: 10px;   /* Space below */
+    border-left: 5px solid #3498db; /* Blue accent bar on the left */
+    padding-left: 10px;    /* Space between bar and text */
+}
+
+/* Intro Paragraph */
+.intro {
+    font-size: 20px;       /* Larger text for introduction */
+    color: #555;           /* Medium grey */
+    font-weight: 300;      /* Light font weight (elegant) */
+    margin-bottom: 20px;   /* Space below */
+}
+
+/* Standard Paragraphs */
+.about-text p {
+    margin-bottom: 15px;   /* Space between paragraphs */
+    color: #666;           /* Soft grey text */
+}
+
+/* Lists (ul) */
+.about-text ul {
+    list-style-type: none; /* Removes default bullet points */
+}
+
+/* List Items (li) */
+.about-text li {
+    background: #eef2f5;   /* Light grey background for each item */
+    margin-bottom: 8px;    /* Space between items */
+    padding: 10px 15px;    /* Inner spacing */
+    border-radius: 5px;    /* Rounded corners */
+    border-left: 4px solid #3498db; /* Blue accent border */
+    font-size: 15px;       /* Text size */
+}
+
+/* Right Side: Image Content */
+.about-image {
+    flex: 1;               /* Takes up equal space */
+    text-align: center;    /* Centers image in its box */
+}
+
+/* Profile Picture Styling */
+.about-image img {
+    width: 300px;          /* Fixed width */
+    height: 300px;         /* Fixed height (square) */
+    object-fit: cover;     /* Crops image to fit without distortion */
+    border-radius: 50%;    /* Makes the image a perfect circle */
+    border: 5px solid #fff;/* White border */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Soft shadow for "pop" effect */
+    transition: transform 0.5s; /* Smooth animation on hover */
+}
+
+.about-image img:hover {
+    transform: scale(1.05); /* Slightly zooms in on hover */
+}
+
+/* =========================================
+   4. CONTACT SECTION STYLES
+   ========================================= */
+
+.contact-box {
+    background: white;     /* White background card */
+    padding: 30px;         /* Inner spacing */
+    border-radius: 10px;   /* Rounded corners */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05); /* Subtle shadow */
+    max-width: 400px;      /* Limit width */
+    margin-top: 20px;      /* Space above */
+}
+
+.contact-box h3 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.contact-box label {
+    display: block;        /* Forces label to be on its own line */
+    margin-bottom: 5px;    /* Space below label */
+    font-weight: bold;     /* Makes label text bold */
+    color: #555;
+}
+
+.contact-box input, 
+.contact-box textarea {
+    width: 100%;           /* Full width */
+    padding: 10px;         /* Inner spacing */
+    margin-bottom: 15px;   /* Space below input */
+    border: 1px solid #ddd;/* Light grey border */
+    border-radius: 5px;    /* Rounded corners */
+    font-family: inherit;  /* Inherit font from body */
+}
+
+/* Focus State (When user clicks inside input) */
+.contact-box input:focus,
+.contact-box textarea:focus {
+    outline: none;         /* Removes default browser outline */
+    border-color: #3498db; /* Changes border to blue */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3); /* Blue glow */
+}
+
+.contact-box button {
+    background-color: #3498db; /* Blue background */
+    color: white;          /* White text */
+    border: none;          /* No border */
+    padding: 12px 20px;    /* Spacing */
+    border-radius: 5px;    /* Rounded corners */
+    cursor: pointer;       /* Changes mouse cursor to pointer */
+    width: 100%;           /* Full width */
+    font-size: 16px;       /* Text size */
+    transition: background 0.3s; /* Smooth color change */
+}
+
+.contact-box button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* =========================================
+   5. EDUCATION TABLE STYLES
+   ========================================= */
+
+table {
+    width: 100%;           /* Table takes full width of container */
+    border-collapse: collapse; /* Merges borders into single lines */
+    background: white;     /* White background */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Shadow for depth */
+    overflow: hidden;      /* Clips content within rounded corners */
+    border-radius: 8px;    /* Rounded corners for the whole table */
+    margin-top: 20px;      /* Space above table */
+}
+
+th, td {
+    padding: 15px;         /* Spacing inside cells */
+    text-align: left;      /* Aligns text to left */
+    border-bottom: 1px solid #eee; /* Light divider line */
+}
+
+th {
+    background-color: #3498db; /* Blue header background */
+    color: white;          /* White header text */
+    text-transform: uppercase; /* Makes text all caps */
+    font-size: 14px;       /* Smaller font size */
+    letter-spacing: 1px;   /* Spacing between letters */
+}
+
+tr:hover {
+    background-color: #f9f9f9; /* Highlights row on hover */
+}
+
+/* =========================================
+   6. FOOTER STYLE
+   ========================================= */
+
+.footer {
+    text-align: center;    /* Centers text */
+    padding: 20px;         /* Spacing */
+    background-color: #1a252f; /* Dark background matching navbar */
+    color: #7f8c8d;        /* Grey text */
+    font-size: 14px;       /* Small text */
+    margin-top: 50px;      /* Pushes footer to bottom */
+}
