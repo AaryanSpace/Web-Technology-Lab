@@ -7,7 +7,7 @@ This repository contains my practical assignments and lab experiments for the **
 ### 1. Personal Portfolio Website 👤
 A static personal website designed to showcase my profile, skills, and projects.
 - **Tech Stack:** HTML, CSS
-- **Features:** About Me section, Education, Contact details, and responsive styling.
+- **Features:** About Me section, Contact details, and responsive styling.
 
 ### 2. E-Commerce Website 🛒
 A frontend prototype for an online shopping platform.
@@ -15,6 +15,12 @@ A frontend prototype for an online shopping platform.
 - **Features:** Product listings, navigation bar, and grid layouts.
 
 ## 🚀 How to View
-Clone the repository:
+1. Clone the repository:
    ```bash
    git clone [https://github.com/AaryanSpace/Web-Technology-Lab.git](https://github.com/AaryanSpace/Web-Technology-Lab.git)
+   
+2. Open any folder (e.g., Ex-1-Personal-Website-HTML).
+3. Double-click index.html to view the website in your browser.
+
+Created by AaryanSpace for Web Technology Lab Record.
+
