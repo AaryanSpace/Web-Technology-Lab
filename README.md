@@ -7,7 +7,7 @@ This repository contains my practical assignments and lab experiments for the **
 ### 1. Personal Portfolio Website 👤
 A static personal website designed to showcase my profile, skills, and projects.
 - **Tech Stack:** HTML, CSS
-- **Features:** About Me section, Contact details, and responsive styling.
+- **Features:** About Me section, Education, Contact details, and responsive styling.
 
 ### 2. E-Commerce Website 🛒
 A frontend prototype for an online shopping platform.
