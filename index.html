@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Technology Lab Record</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -20,7 +21,7 @@
 
             <div class="header-content">
                 <h2 class="sub-heading">Faculty of Engineering</h2>
-                <h1 class="main-heading">Web Technology Lab Record</h1>
+                <h1 class="main-heading">Web Technology <span class="gradient-text">Lab Record</span></h1>
                 <div class="badge">B.Tech Computer Science & Engineering</div>
             </div>
         </header>
@@ -28,25 +29,29 @@
         <section class="info-section">
             
             <div class="info-card student">
-                <div class="icon-box">👨‍🎓</div>
+                <div class="icon-box">
+                    <span class="emoji">🎓</span>
+                </div>
                 <div class="info-text">
                     <span class="label">Submitted By</span>
                     <h3 class="name">Aaryan Sah</h3>
                     <div class="meta-row">
-                        <span><strong>USN:</strong> 24BTRCN054</span>
-                        <span><strong>Sem:</strong> IV</span>
+                        <span class="meta-pill">USN: 24BTRCN054</span>
+                        <span class="meta-pill">Sem: IV</span>
                     </div>
                 </div>
             </div>
 
             <div class="info-card faculty">
-                <div class="icon-box">👨‍🏫</div>
+                <div class="icon-box">
+                    <span class="emoji">👨‍🏫</span>
+                </div>
                 <div class="info-text">
                     <span class="label">Submitted To</span>
                     <h3 class="name">Mr. Junaid Rasool</h3>
                     <div class="meta-row">
-                        <span>Assistant Professor</span>
-                        <span>Web Tech Dept</span>
+                        <span class="meta-pill">Asst. Professor</span>
+                        <span class="meta-pill">Web Tech</span>
                     </div>
                 </div>
             </div>
@@ -56,55 +61,79 @@
         <div class="section-divider"></div>
 
         <section class="experiment-section">
-            <h2 class="section-title">Index of Experiments</h2>
+            <div class="section-header">
+                <h2 class="section-title">Index of Experiments</h2>
+                <span class="course-code">Code: CS402</span>
+            </div>
 
             <div class="experiment-list">
 
                 <a href="Ex-1-Personal-Website-HTML/" class="exp-row">
-                    <div class="exp-number">01</div>
-                    <div class="exp-info">
-                        <span class="exp-category">HTML Basics</span>
-                        <h3 class="exp-name">Personal Website Creation</h3>
+                    <div class="exp-index">01</div>
+                    <div class="exp-content">
+                        <div class="exp-tags">
+                            <span class="tag html">HTML5</span>
+                        </div>
+                        <h3 class="exp-title">Personal Website Creation</h3>
+                        <p class="exp-desc">Building a semantic portfolio structure.</p>
                     </div>
-                    <div class="exp-status">Completed</div>
-                    <div class="arrow-btn">➔</div>
+                    <div class="exp-action">
+                        <span class="status-badge">Completed</span>
+                        <div class="icon-arrow">→</div>
+                    </div>
                 </a>
 
                 <a href="Ex-2-E-Commerce-Website-HTML/" class="exp-row">
-                    <div class="exp-number">02</div>
-                    <div class="exp-info">
-                        <span class="exp-category">HTML Structure</span>
-                        <h3 class="exp-name">E-Commerce Website Layout</h3>
+                    <div class="exp-index">02</div>
+                    <div class="exp-content">
+                        <div class="exp-tags">
+                            <span class="tag html">HTML5</span>
+                        </div>
+                        <h3 class="exp-title">E-Commerce Website Layout</h3>
+                        <p class="exp-desc">Product grid and navigation structure.</p>
                     </div>
-                    <div class="exp-status">Completed</div>
-                    <div class="arrow-btn">➔</div>
+                    <div class="exp-action">
+                        <span class="status-badge">Completed</span>
+                        <div class="icon-arrow">→</div>
+                    </div>
                 </a>
 
                 <a href="Ex-3-Personal-Style-CSS/" class="exp-row">
-                    <div class="exp-number">03</div>
-                    <div class="exp-info">
-                        <span class="exp-category">CSS Styling</span>
-                        <h3 class="exp-name">Styling Personal Website</h3>
+                    <div class="exp-index">03</div>
+                    <div class="exp-content">
+                        <div class="exp-tags">
+                            <span class="tag css">CSS3</span>
+                        </div>
+                        <h3 class="exp-title">Styling Personal Website</h3>
+                        <p class="exp-desc">Applying modern styles and layouts.</p>
                     </div>
-                    <div class="exp-status">Completed</div>
-                    <div class="arrow-btn">➔</div>
+                    <div class="exp-action">
+                        <span class="status-badge">Completed</span>
+                        <div class="icon-arrow">→</div>
+                    </div>
                 </a>
 
                 <a href="Ex-4-E-Commerce-Style-CSS/" class="exp-row">
-                    <div class="exp-number">04</div>
-                    <div class="exp-info">
-                        <span class="exp-category">Advanced CSS</span>
-                        <h3 class="exp-name">Styling E-Commerce Platform</h3>
+                    <div class="exp-index">04</div>
+                    <div class="exp-content">
+                        <div class="exp-tags">
+                            <span class="tag css">CSS3</span>
+                            <span class="tag advanced">Flexbox</span>
+                        </div>
+                        <h3 class="exp-title">Styling E-Commerce Platform</h3>
+                        <p class="exp-desc">Responsive product cards and navbar.</p>
                     </div>
-                    <div class="exp-status">Completed</div>
-                    <div class="arrow-btn">➔</div>
+                    <div class="exp-action">
+                        <span class="status-badge">Completed</span>
+                        <div class="icon-arrow">→</div>
+                    </div>
                 </a>
 
             </div>
         </section>
 
         <footer class="footer">
-            <p>&copy; 2026 Jain University | Web Technology Laboratory Record</p>
+            <p>&copy; 2026 Jain University | <span class="highlight">Department of Computer Science</span></p>
         </footer>
 
     </div>
