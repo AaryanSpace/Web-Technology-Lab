@@ -20,7 +20,9 @@ A frontend prototype for an online shopping platform.
    git clone [https://github.com/AaryanSpace/Web-Technology-Lab.git](https://github.com/AaryanSpace/Web-Technology-Lab.git)
    
 2. Open any folder (e.g., Ex-1-Personal-Website-HTML).
+ 
 3. Double-click index.html to view the website in your browser.
 
-Created by AaryanSpace for Web Technology Lab Record.
+---
+*Created by AaryanSpace for Web Technology Lab Record.*
 
