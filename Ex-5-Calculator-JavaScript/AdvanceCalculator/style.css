@@ -1,0 +1,143 @@
+/* =========================================
+   1. GENERAL SETUP (DEVELOPER THEME)
+   ========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Clean, modern UI font for the buttons */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* VIVA POINT: Deep dark editor background (like VS Code) */
+    background: linear-gradient(135deg, #d3bbda 0%, #e97474 100%);
+    color: #e2e8f0;
+}
+
+/* =========================================
+   2. CALCULATOR BODY & DISPLAY
+   ========================================= */
+
+.calculator {
+    width: 400px;
+    padding: 25px;
+    border-radius: 20px;
+    
+    /* --- DEVELOPER GLASS EFFECT --- */
+    /* Darker, stealthy glass background */
+    background: rgba(15, 23, 42, 0.4); 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* Subtle neon cyan border simulating a tech-glow */
+    border: 1px solid rgba(56, 189, 248, 0.1); 
+    box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.8);
+}
+
+.display {
+    /* Pitch black inset screen like a terminal */
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5); 
+    
+    /* VIVA POINT: Neon green text with a Monospace font to look like coding terminal output */
+    color: #4ade80; 
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.4); /* Glowing text effect */
+    
+    font-size: 3rem;
+    text-align: right; 
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    word-wrap: break-word; 
+    letter-spacing: 2px;
+}
+
+/* =========================================
+   3. BUTTONS GRID & SIZING
+   ========================================= */
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr)); 
+    gap: 15px; 
+}
+
+/* Base styling for all regular number buttons */
+.btn {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    outline: none;
+    font-size: 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    
+    /* Stealthy dark grey glass for numbers */
+    background: rgba(30, 41, 59, 0.6);
+    color: #cbd5e1;
+    transition: all 0.3s ease;
+    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
+    
+    aspect-ratio: 1 / 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn:active {
+    transform: translateY(3px); 
+    box-shadow: none; 
+    background: rgba(30, 41, 59, 0.9);
+}
+
+.btn:hover {
+    background: rgba(51, 65, 85, 0.8); 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* =========================================
+   4. SYNTAX HIGHLIGHTING COLORS (OPERATORS)
+   ========================================= */
+
+/* Cyan for math operators (Like variables/functions in code) */
+.operator {
+    background: rgba(6, 182, 212, 0.15); 
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    color: #22d3ee; /* Neon Cyan text */
+}
+.operator:hover { 
+    background: rgba(6, 182, 212, 0.3); 
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.2); 
+}
+
+/* Pink/Red for the Clear and Delete buttons (Like 'Error' or 'Stop' flags) */
+.clear {
+    background: rgba(244, 63, 94, 0.15); 
+    border: 1px solid rgba(244, 63, 94, 0.3);
+    color: #fb7185; /* Neon Pink text */
+}
+.clear:hover { 
+    background: rgba(244, 63, 94, 0.3); 
+    box-shadow: 0 0 15px rgba(244, 63, 94, 0.2);
+}
+
+/* Matrix Green for the Equal button (Like a 'Success' or 'Run' button) */
+.equal {
+    background: rgba(16, 185, 129, 0.15); 
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    color: #34d399; /* Neon Green text */
+    
+    grid-column: span 2; 
+    aspect-ratio: auto; 
+}
+.equal:hover { 
+    background: rgba(16, 185, 129, 0.3); 
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    
+<style>
+        /* 1. Global Reset */
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* 2. Body - using the exact gradient background you provided */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #d3bbda 0%, #e97474 100%);
+            color: #e2e8f0;
+        }
+
+        /* 3. The Main Calculator Card (Developer Glass Effect) */
+        .calculator-box {
+            width: 340px;
+            padding: 30px 30px;
+            text-align: center;
+            border-radius: 15px;
+            
+            /* Dark stealthy glass background */
+            background: rgba(15, 23, 42, 0.4); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            
+            /* Subtle neon cyan border simulating a tech-glow */
+            border: 1px solid rgba(56, 189, 248, 0.1); 
+            box-shadow: 0 10px 40px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        /* 4. Heading Styling */
+        h2 {
+            margin-top: 0;
+            color: #e2e8f0;
+            font-size: 22px;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        
+
+        /* 5. Modern Input Fields (Terminal Style) */
+        input {
+            width: 95%; 
+            padding: 17px;
+            margin-bottom: 16px;
+            font-size: 22px;
+            
+            /* Pitch black inset screen like a terminal */
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5);
+            
+            /* Neon green text with Monospace font */
+            color: #4ade80; 
+            font-family: 'Courier New', Courier;
+            font-weight: bold;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            outline: none; 
+        }
+
+        /* Styling the placeholder text to look like faded neon */
+        input::placeholder {
+            color: rgba(74, 222, 128, 0.3);
+        }
+
+        /* When the user clicks inside the input box */
+        input:focus {
+            border-color: rgba(6, 182, 212, 0.5); /* Cyan glow border */
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.2), inset 0 4px 10px rgba(0, 0, 0, 0.5); 
+        }
+
+        /* 6. Operator Buttons (Cyan Syntax Highlighting) */
+        button {
+            width: 55px;
+            height: 55px; 
+            font-size: 22px;
+            margin: 8px 5px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            
+            /* Cyan for math operators */
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: #000000; /* Neon Cyan text */
+            
+            /* Flexbox to center text perfectly in the square */
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Button Hover and Click Effects */
+        button:hover {
+            background: rgba(6, 182, 212, 0.3); 
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.2); 
+            transform: translateY(-3px); 
+        }
+
+        button:active {
+            transform: translateY(1px); 
+            box-shadow: none;
+            background: rgba(6, 182, 212, 0.5);
+        }
+
+        /* 7. Result Display Area Container */
+        #result {
+            margin-top: 20px;
+            margin-bottom: 20;
+            padding: 28px 25px;
+            border-radius: 12px;
+            word-wrap: break-word; 
+            font-size: 22px;
+            text-align: left;
+            
+            /* Advanced Terminal Display Styling */
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.5); 
+            color: #4ade80; 
+            font-family: 'Courier New', Courier, monospace;
+            text-shadow: 0 0 10px rgba(74, 222, 128, 0.4); 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator-box">
+        <h3 id="result">Result: </h3>
+
+        <h2>Enter Numbers Below</h2>
+        
+        <input type="number" id="num1" placeholder="Enter 1st number">
+        <input type="number" id="num2" placeholder="Enter 2nd number">
+        
+        <br><br>
+   
+        <button onclick="calculate('+')">+</button>
+        <button onclick="calculate('-')">-</button>
+        <button onclick="calculate('*')">*</button>
+        <button onclick="calculate('/')">/</button>
+     <h3>Tap Operator to Calculate</h3>
+        
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
