@@ -37,4 +37,5 @@ A collection of fully functional calculators built with logic and DOM manipulati
 2. Open any folder (e.g., Ex-5-Calculator-JavaScript).
 3. Double-click index.html to view the website in your browser.
 
-Created by AaryanSpace for Web Technology Lab Record.
+---
+*Created by AaryanSpace for Web Technology Lab Record.*
