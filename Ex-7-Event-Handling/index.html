@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 7 Index | Event Handling</title>
+    <link rel="stylesheet" href="style-ex7.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo-wrapper">
+            <h2>Exercise 7: Event Handling</h2>
+        </div>
+    </header>
+
+    <section style="max-width: 1200px; margin: 60px auto; padding: 0 40px;">
+        <div style="text-align: center;">
+            <!-- Projects Section -->
+            <h1 style="margin-bottom: 60px; color: #333; font-size: 44px;">Projects</h1>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px;">
+                <!-- Personal Website Project -->
+                <div onclick="window.location.href='../../Ex-3-Personal-Style-CSS/index.html'" style="background: white; padding: 40px 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer; border: 2px solid #f0f0f0;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.1)'">
+                    <div style="font-size: 48px; margin-bottom: 20px;">🎨</div>
+                    <h3 style="font-size: 24px; color: #333; margin-bottom: 15px; font-weight: 600;">Personal Website</h3>
+                    <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">Interactive portfolio website built with HTML5 and CSS3</p>
+                    <a href="../../Ex-3-Personal-Style-CSS/index.html" style="color: #667eea; font-weight: 600; text-decoration: none; font-size: 16px;">View Details →</a>
+                </div>
+
+                <!-- E-Commerce Store Project -->
+                <div onclick="window.location.href='../../Ex-4-E-Commerce-Style-CSS/index.html'" style="background: white; padding: 40px 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer; border: 2px solid #f0f0f0;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.1)'">
+                    <div style="font-size: 48px; margin-bottom: 20px;">🛍️</div>
+                    <h3 style="font-size: 24px; color: #333; margin-bottom: 15px; font-weight: 600;">E-Commerce Store</h3>
+                    <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">Full-featured e-commerce platform with product listing</p>
+                    <a href="../../Ex-4-E-Commerce-Style-CSS/index.html" style="color: #667eea; font-weight: 600; text-decoration: none; font-size: 16px;">View Details →</a>
+                </div>
+
+                <!-- Calculator App Project -->
+                <div onclick="window.location.href='../../Ex-5-Calculator-JavaScript/index.html'" style="background: white; padding: 40px 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer; border: 2px solid #f0f0f0;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 40px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.1)'">
+                    <div style="font-size: 48px; margin-bottom: 20px;">🧮</div>
+                    <h3 style="font-size: 24px; color: #333; margin-bottom: 15px; font-weight: 600;">Calculator App</h3>
+                    <p style="color: #666; font-size: 16px; line-height: 1.6; margin-bottom: 20px;">Multiple calculator types with JavaScript logic</p>
+                    <a href="../../Ex-5-Calculator-JavaScript/index.html" style="color: #667eea; font-weight: 600; text-decoration: none; font-size: 16px;">View Details →</a>
+                </div>
+            </div>
+
+            <div style="height: 2px; background: linear-gradient(90deg, transparent, #ddd, transparent); margin: 60px 0;"></div>
+
+            <h1 style="margin-bottom: 40px; color: #667eea; margin-top: 60px;">Event Handling Demonstrations</h1>
+            
+            <p style="font-size: 16px; color: #666; margin-bottom: 40px; line-height: 1.8;">
+                Event handling is a fundamental concept in JavaScript web development. These demonstrations show how to respond to user interactions like clicks, hovers, form submissions, and more.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
+                <!-- Personal Website Events -->
+                <a href="personal-website-events.html" style="text-decoration: none;">
+                    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <h3 style="color: #667eea; margin-bottom: 15px;">📱 Personal Website Events</h3>
+                        <p style="color: #666; line-height: 1.6;">Navigation clicks, hover effects, button events, skill toggles, form submission, and contact form handling.</p>
+                    </div>
+                </a>
+
+                <!-- E-Commerce Events -->
+                <a href="ecommerce-events.html" style="text-decoration: none;">
+                    <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                        <h3 style="color: #764ba2; margin-bottom: 15px;">🛍️ E-Commerce Events</h3>
+                        <p style="color: #666; line-height: 1.6;">Product filtering, search functionality, shopping cart management, modal interactions, and purchase events.</p>
+                    </div>
+                </a>
+            </div>
+
+            <div style="background: #f0f9ff; padding: 30px; border-radius: 10px; text-align: left; margin-bottom: 40px;">
+                <h3 style="color: #667eea; margin-bottom: 20px;">📚 Event Types Covered:</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; color: #666;">
+                    <div>
+                        <strong style="color: #333;">Mouse Events</strong>
+                        <ul style="margin-top: 10px;">
+                            <li>onclick - Click events</li>
+                            <li>onmouseover - Hover in</li>
+                            <li>onmouseout - Hover out</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong style="color: #333;">Form Events</strong>
+                        <ul style="margin-top: 10px;">
+                            <li>onfocus - Input focused</li>
+                            <li>onblur - Input unfocused</li>
+                            <li>onsubmit - Form submission</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong style="color: #333;">Keyboard & Page Events</strong>
+                        <ul style="margin-top: 10px;">
+                            <li>onkeyup - Key released</li>
+                            <li>onkeydown - Key pressed</li>
+                            <li>onload/DOMContentLoaded</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #f9f9f9; padding: 30px; border-radius: 10px; text-align: left;">
+                <h3 style="color: #333; margin-bottom: 15px;">✨ Key Concepts Demonstrated:</h3>
+                <ul style="color: #666; line-height: 2;">
+                    <li>✓ Event listeners and handlers</li>
+                    <li>✓ Event objects and preventDefault()</li>
+                    <li>✓ DOM manipulation based on events</li>
+                    <li>✓ Real-time search and filtering</li>
+                    <li>✓ Dynamic content creation</li>
+                    <li>✓ Local storage integration</li>
+                    <li>✓ Animations and visual feedback</li>
+                    <li>✓ Model/popup interactions</li>
+                </ul>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <a href="../../index.html" style="display: inline-block; padding: 12px 30px; background: #667eea; color: white; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.background='#764ba2'" onmouseout="this.style.background='#667eea'">
+                    ← Back to Main Index
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Web Technology Lab | Exercise 7: Event Handling</p>
+    </footer>
+</body>
+</html>

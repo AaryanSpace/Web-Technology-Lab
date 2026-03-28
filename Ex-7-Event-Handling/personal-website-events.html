@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Website with Event Handling | Aaryan Sah</title>
+    <link rel="stylesheet" href="style-ex7.css">
+</head>
+<body>
+
+    <!-- Navigation Bar with Event Handlers -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="logo">
+                <h2>Aaryan.</h2>
+            </div>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link" onclick="handleNavigation(event, 'home')">Home</a></li>
+                <li><a href="#about" class="nav-link" onclick="handleNavigation(event, 'about')">About</a></li>
+                <li><a href="#projects" class="nav-link" onclick="handleNavigation(event, 'projects')">Projects</a></li>
+                <li><a href="#contact" class="nav-link" onclick="handleNavigation(event, 'contact')">Contact</a></li>
+            </ul>
+
+            <!-- Hamburger Menu for Mobile -->
+            <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Hi, I'm <span class="highlight">Aaryan Sah</span></h1>
+            <p>Full-Stack Web Developer & Tech Enthusiast</p>
+            <button class="cta-button" onmouseover="handleButtonHover(this)" onmouseout="handleButtonOut(this)" onclick="handleCTAClick()">
+                Get Started
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I am a passionate Computer Science Engineering student with expertise in web development.</p>
+                <p>I love building beautiful and functional web applications using modern technologies.</p>
+
+                <!-- Skills Buttons with Toggle Event -->
+                <div class="skills-container">
+                    <h3>Skills</h3>
+                    <div class="skills-list">
+                        <button class="skill-btn" onclick="toggleSkillDetails(event)">HTML5</button>
+                        <button class="skill-btn" onclick="toggleSkillDetails(event)">CSS3</button>
+                        <button class="skill-btn" onclick="toggleSkillDetails(event)">JavaScript</button>
+                        <button class="skill-btn" onclick="toggleSkillDetails(event)">PHP</button>
+                        <button class="skill-btn" onclick="toggleSkillDetails(event)">MySQL</button>
+                        <button class="skill-btn" onclick="toggleSkillDetails(event)">Git</button>
+                    </div>
+                    <!-- Skill Details Popup -->
+                    <div class="skill-details" id="skillDetails" style="display: none;">
+                        <p id="skillText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="section-container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <!-- Project Card 1 -->
+                <div class="project-card" onmouseover="handleProjectHover(this)" onmouseout="handleProjectOut(this)" onclick="handleProjectClick(this)">
+                    <div class="project-thumbnail">📱</div>
+                    <h3>Personal Website</h3>
+                    <p>Interactive portfolio website built with HTML5 and CSS3</p>
+                    <span class="project-status">View Details</span>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="project-card" onmouseover="handleProjectHover(this)" onmouseout="handleProjectOut(this)" onclick="handleProjectClick(this)">
+                    <div class="project-thumbnail">🛍️</div>
+                    <h3>E-Commerce Store</h3>
+                    <p>Full-featured e-commerce platform with product listing</p>
+                    <span class="project-status">View Details</span>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="project-card" onmouseover="handleProjectHover(this)" onmouseout="handleProjectOut(this)" onclick="handleProjectClick(this)">
+                    <div class="project-thumbnail">🔢</div>
+                    <h3>Calculator App</h3>
+                    <p>Multiple calculator types with JavaScript logic</p>
+                    <span class="project-status">View Details</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section with Interactive Form -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <h2>Get In Touch</h2>
+            <form class="contact-form" onsubmit="handleContactSubmit(event)" id="contactForm">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        placeholder="Your Name" 
+                        class="form-input"
+                        onfocus="handleFormFocus(event)"
+                        onblur="handleFormBlur(event)"
+                    >
+                </div>
+                <div class="form-group">
+                    <input 
+                        type="email" 
+                        placeholder="Your Email" 
+                        class="form-input"
+                        onfocus="handleFormFocus(event)"
+                        onblur="handleFormBlur(event)"
+                    >
+                </div>
+                <div class="form-group">
+                    <textarea 
+                        placeholder="Your Message" 
+                        class="form-input"
+                        rows="5"
+                        onfocus="handleFormFocus(event)"
+                        onblur="handleFormBlur(event)"
+                    ></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <div id="contactMessage" class="contact-message"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Aaryan Sah | All Rights Reserved</p>
+    </footer>
+
+    <!-- JavaScript Event Handling -->
+    <script src="events-ex7.js"></script>
+
+</body>
+</html>

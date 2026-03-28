@@ -289,6 +289,8 @@ body {
 
 .tag.html { background: #fff7ed; color: #c2410c; }
 .tag.css { background: #eff6ff; color: #1d4ed8; }
+.tag.php { background: #f3e8ff; color: #7e22ce; }
+.tag.mysql { background: #fef3c7; color: #b45309; }
 .tag.advanced { background: #fdf4ff; color: #a21caf; }
 
 .exp-title {

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | PahiranGo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-left">
+                <h2><strong>PahiranGo</strong></h2>
+            </div>
+            <div class="nav-right">
+                <a href="index.html">Back to Home</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Login Container -->
+    <div class="form-container">
+        <div class="form-wrapper login-wrapper">
+            <h1>Welcome Back</h1>
+            <p class="form-subtitle">Sign in to your PahiranGo account</p>
+
+            <!-- Login Form with JavaScript Validation -->
+            <form id="loginForm" onsubmit="handleLogin(event)" novalidate>
+                
+                <!-- Email/Username Field -->
+                <div class="form-group">
+                    <label for="loginEmail">Email Address or Username <span class="required">*</span></label>
+                    <input 
+                        type="text" 
+                        id="loginEmail" 
+                        name="loginEmail" 
+                        placeholder="Enter your email or username"
+                        class="form-input"
+                    >
+                    <!-- Error message display for email/username -->
+                    <span class="error-message" id="loginEmailError"></span>
+                </div>
+
+                <!-- Password Field -->
+                <div class="form-group">
+                    <label for="loginPassword">Password <span class="required">*</span></label>
+                    <input 
+                        type="password" 
+                        id="loginPassword" 
+                        name="loginPassword" 
+                        placeholder="Enter your password"
+                        class="form-input"
+                    >
+                    <!-- Error message display for password -->
+                    <span class="error-message" id="loginPasswordError"></span>
+                </div>
+
+                <!-- Remember Me Checkbox -->
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input 
+                            type="checkbox" 
+                            id="rememberMe" 
+                            name="rememberMe"
+                        > 
+                        Remember me for 30 days
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Sign In</button>
+
+                <!-- Form Messages -->
+                <div id="loginSuccessMessage" class="success-message" style="display: none;">
+                    ✓ Login successful! Redirecting...
+                </div>
+                <div id="loginGeneralError" class="error-message" style="display: block; margin-top: 15px;"></div>
+
+                <!-- Forgot Password and Sign Up Links -->
+                <div class="form-links">
+                    <p>
+                        <a href="forgot-password.html" class="forgot-link">Forgot password?</a>
+                    </p>
+                </div>
+
+                <!-- New user link -->
+                <p class="form-footer">
+                    Don't have an account? <a href="registration.html">Create one now</a>
+                </p>
+            </form>
+
+            <!-- Demo Credentials (for testing purposes) -->
+            <div class="demo-info">
+                <p><strong>Demo Credentials (for testing):</strong></p>
+                <p>Email: demo@pahirango.com | Password: Demo@123</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Validation Script -->
+    <script src="validation.js"></script>
+
+</body>
+</html>

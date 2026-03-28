@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PahiranGo | E-Commerce with Event Handling</title>
+    <link rel="stylesheet" href="style-ecommerce-ex7.css">
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="navbar">
+            <div class="logo" onclick="handleLogoClick()">
+                <h2><strong>PahiranGo</strong></h2>
+            </div>
+
+            <nav class="nav-links" id="navMenu">
+                <a href="#" onclick="handleNavClick(event, 'shop')" class="nav-item">Shop</a>
+                <a href="#" onclick="handleNavClick(event, 'women')" class="nav-item">Women</a>
+                <a href="#" onclick="handleNavClick(event, 'men')" class="nav-item">Men</a>
+                <a href="#" onclick="handleNavClick(event, 'cosmetics')" class="nav-item">Cosmetics</a>
+            </nav>
+
+            <div class="header-right">
+                <input type="text" placeholder="Search..." class="search-input" onfocus="handleSearchFocus(event)" onblur="handleSearchBlur(event)" onkeyup="handleSearchInput(event)">
+                <div class="cart-icon" onclick="handleCartClick()">
+                    🛒 <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <div class="user-icon" onclick="handleUserClick()">
+                    👤
+                </div>
+            </div>
+
+            <div class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="banner-content">
+            <h1>Summer Collection 2026</h1>
+            <p>Discover our latest fashion trends</p>
+            <button class="banner-btn" onmouseover="handleButtonHover(this)" onmouseout="handleButtonOut(this)" onclick="handleShopNowClick()">SHOP NOW</button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <h2>Featured Products</h2>
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="handleFilterClick(event, 'all')">All</button>
+            <button class="filter-btn" onclick="handleFilterClick(event, 'women')">Women</button>
+            <button class="filter-btn" onclick="handleFilterClick(event, 'men')">Men</button>
+            <button class="filter-btn" onclick="handleFilterClick(event, 'cosmetics')">Cosmetics</button>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="products-grid" id="productsGrid">
+            <!-- Product elements will be added here by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Shopping Cart Popup -->
+    <div class="cart-popup" id="cartPopup" style="display: none;">
+        <div class="cart-content">
+            <button class="close-btn" onclick="handleCartClose()">✕</button>
+            <h2>Shopping Cart</h2>
+            <div class="cart-items" id="cartItems">
+                <p style="text-align: center; color: #999;">Your cart is empty</p>
+            </div>
+            <div class="cart-total">
+                <strong>Total: $<span id="cartTotal">0.00</span></strong>
+            </div>
+            <button class="checkout-btn" onclick="handleCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div class="modal" id="productModal" style="display: none;">
+        <div class="modal-content">
+            <button class="close-btn" onclick="handleModalClose()">✕</button>
+            <div class="modal-body">
+                <div class="modal-image" id="modalImage">📦</div>
+                <div class="modal-info">
+                    <h3 id="modalTitle">Product Title</h3>
+                    <p id="modalDesc">Product Description</p>
+                    <p class="price" id="modalPrice">$0.00</p>
+                    <div class="quantity-selector">
+                        <button onclick="decrementQuantity()">-</button>
+                        <input type="number" id="modalQuantity" value="1" min="1" max="10">
+                        <button onclick="incrementQuantity()">+</button>
+                    </div>
+                    <button class="add-to-cart-btn" onclick="handleAddToCart()">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 PahiranGo | All Rights Reserved</p>
+    </footer>
+
+    <!-- JavaScript Event Handlers -->
+    <script src="events-ecommerce-ex7.js"></script>
+
+</body>
+</html>
