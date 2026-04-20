@@ -3,334 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise 8 - PHP Form Handling</title>
+    <title>Ex-08 — PHP Form Processing | PahiranGo Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --brand-start: #667eea; --brand-end: #764ba2; --brand-mid: #6f73d2;
+            --white: #ffffff; --surface: #f8f7ff; --border: #e8e4f3;
+            --text-primary: #1a1525; --text-secondary: #5a5370; --text-muted: #8b85a0;
+            --success: #059669; --success-bg: #ecfdf5; --warning: #b45309;
+            --warning-bg: #fffbeb; --error: #dc2626; --error-bg: #fef2f2;
+            --code-bg: #f1eeff; --shadow-sm: 0 2px 8px rgba(102,126,234,0.08);
+            --shadow-md: 0 8px 32px rgba(102,126,234,0.14); --shadow-lg: 0 20px 60px rgba(102,126,234,0.18);
+            --radius: 16px;
         }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 50px;
-        }
-        
-        .header h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        
-        .forms-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-        }
-        
-        .form-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-        
-        .form-card h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: 600;
-        }
-        
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-        
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-        
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #667eea;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        button:hover {
-            background: #764ba2;
-            transform: translateY(-2px);
-        }
-        
-        .error {
-            color: #dc2626;
-            font-size: 13px;
-            margin-top: 5px;
-        }
-        
-        .success {
-            color: #10b981;
-            padding: 15px;
-            background: #f0fdf4;
-            border-radius: 8px;
-            margin-top: 15px;
-            text-align: center;
-        }
-        
-        .note {
-            background: #fef3c7;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            font-size: 13px;
-            color: #92400e;
-        }
-        
-        @media (max-width: 768px) {
-            .forms-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 24px;
-            }
-        }
+        body { font-family: 'DM Sans', sans-serif; background: linear-gradient(135deg, var(--brand-start) 0%, var(--brand-end) 100%); min-height: 100vh; padding: 48px 20px 80px; color: var(--text-primary); }
+        body::before { content: ''; position: fixed; inset: 0; background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.07) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+        .container { max-width: 960px; margin: 0 auto; position: relative; z-index: 1; }
+        .header-card { background: var(--white); border-radius: var(--radius); padding: 40px 44px 36px; box-shadow: var(--shadow-lg); margin-bottom: 28px; position: relative; overflow: hidden; }
+        .header-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--brand-start), var(--brand-end)); }
+        .ex-label { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, var(--brand-start), var(--brand-end)); color: white; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 18px; }
+        .ex-label::before { content: '⚗️'; font-size: 13px; }
+        .header-card h1 { font-size: 28px; font-weight: 700; color: var(--text-primary); line-height: 1.25; margin-bottom: 8px; }
+        .header-card h1 span { background: linear-gradient(135deg, var(--brand-start), var(--brand-end)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .header-subtitle { color: var(--text-secondary); font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
+        .meta-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 24px; }
+        .meta-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-secondary); font-size: 12.5px; font-weight: 500; padding: 5px 12px; border-radius: 8px; }
+        .meta-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-start); }
+        .env-note { background: var(--warning-bg); border: 1px solid #fed7aa; border-left: 4px solid #f59e0b; border-radius: 12px; padding: 16px 20px; display: flex; align-items: flex-start; gap: 12px; }
+        .env-note-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+        .env-note-text { font-size: 13.5px; color: var(--warning); line-height: 1.65; }
+        .env-note-text strong { font-weight: 600; color: #92400e; }
+        .step-card { background: var(--white); border-radius: var(--radius); padding: 36px 40px; box-shadow: var(--shadow-md); margin-bottom: 24px; border: 1px solid rgba(255,255,255,0.6); transition: box-shadow 0.25s ease, transform 0.25s ease; }
+        .step-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+        .step-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 20px; }
+        .step-badge { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--brand-start), var(--brand-end)); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; flex-shrink: 0; box-shadow: 0 4px 12px rgba(102,126,234,0.35); }
+        .step-title { font-size: 20px; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: 4px; }
+        .step-subtitle { font-size: 13px; color: var(--text-muted); font-weight: 500; }
+        .desc-box { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--brand-start); border-radius: 10px; padding: 18px 20px; margin-bottom: 22px; font-size: 14.5px; color: var(--text-secondary); line-height: 1.75; }
+        .desc-box p + p { margin-top: 10px; }
+        code { font-family: 'DM Mono', monospace; font-size: 12.5px; background: var(--code-bg); color: var(--brand-mid); padding: 2px 7px; border-radius: 5px; font-weight: 500; }
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 22px; }
+        .tech-item { background: var(--code-bg); border: 1px solid #d8d0f8; border-radius: 10px; padding: 12px 15px; font-size: 13px; color: var(--brand-mid); font-weight: 500; }
+        .tech-item strong { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 4px; }
+        .screenshot-label { font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .screenshot-label::before { content: ''; display: block; height: 1px; width: 24px; background: var(--border); }
+        .img-single { border: 1.5px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--surface); box-shadow: var(--shadow-sm); }
+        .img-single img { width: 100%; height: auto; display: block; }
+        .img-caption { padding: 10px 16px; font-size: 12px; color: var(--text-muted); background: var(--surface); border-top: 1px solid var(--border); font-style: italic; }
+        .outcome-strip { display: flex; align-items: center; gap: 10px; background: var(--success-bg); border: 1px solid #a7f3d0; border-radius: 10px; padding: 12px 18px; margin-top: 18px; font-size: 13.5px; color: var(--success); font-weight: 500; }
+        .outcome-strip::before { content: '✓'; font-weight: 700; font-size: 15px; }
+        .sub-step-divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; color: var(--text-muted); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; }
+        .sub-step-divider::before, .sub-step-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+        .footer-nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 9px; background: white; color: var(--brand-start); text-decoration: none; font-weight: 600; font-size: 14px; padding: 13px 24px; border-radius: 12px; box-shadow: var(--shadow-md); transition: all 0.25s ease; border: 1.5px solid transparent; }
+        .back-btn:hover { background: var(--brand-start); color: white; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .nav-next { display: inline-flex; align-items: center; gap: 9px; background: rgba(255,255,255,0.18); color: white; text-decoration: none; font-weight: 600; font-size: 14px; padding: 13px 24px; border-radius: 12px; border: 1.5px solid rgba(255,255,255,0.35); transition: all 0.25s ease; backdrop-filter: blur(8px); }
+        .nav-next:hover { background: rgba(255,255,255,0.28); transform: translateY(-2px); }
+        .footer-info { color: rgba(255,255,255,0.7); font-size: 12.5px; text-align: center; width: 100%; margin-top: 20px; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Exercise 8: PHP Form Handling & Validation</h1>
-            <p>Server-side form validation and processing</p>
+<div class="container">
+    <div class="header-card">
+        <div class="ex-label">Exercise 08 · Web Technology Lab · PahiranGo</div>
+        <h1>PHP Form Processing <span>&amp; Validation</span></h1>
+        <p class="header-subtitle">Server-side form validation, input sanitization using regex, and AJAX-powered submission for the PahiranGo contact and e-commerce registration forms.</p>
+
+        <div class="meta-row">
+            <span class="meta-badge"><span class="dot"></span> Language: PHP 8.x</span>
+            <span class="meta-badge"><span class="dot"></span> Server: Apache / XAMPP</span>
+            <span class="meta-badge"><span class="dot"></span> Host: Localhost (127.0.0.1)</span>
+            <span class="meta-badge"><span class="dot"></span> Method: POST + AJAX fetch()</span>
         </div>
-        
-        <div class="forms-grid">
-            <!-- Personal Website Contact Form -->
-            <div class="form-card">
-                <h2>📧 Contact Form (Personal Website)</h2>
-                <div class="note">
-                    This form demonstrates server-side validation using PHP. Submit to see validation in action.
-                </div>
-                
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                        <div class="error" id="nameError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                        <div class="error" id="emailError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" placeholder="10-digit phone number" required>
-                        <div class="error" id="phoneError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subject *</label>
-                        <input type="text" id="subject" name="subject" placeholder="Message subject" required>
-                        <div class="error" id="subjectError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" placeholder="Your message" rows="4" required></textarea>
-                        <div class="error" id="messageError"></div>
-                    </div>
-                    
-                    <button type="submit">Submit Contact Form</button>
-                    <div id="contactSuccess"></div>
-                </form>
-            </div>
-            
-            <!-- E-Commerce Registration Form -->
-            <div class="form-card">
-                <h2>👤 Registration Form (E-Commerce)</h2>
-                <div class="note">
-                    Complete registration with password hashing and validation. All fields required.
-                </div>
-                
-                <form id="registrationForm">
-                    <div class="form-group">
-                        <label for="fullName">Full Name *</label>
-                        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
-                        <div class="error" id="fullNameError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="regEmail">Email *</label>
-                        <input type="email" id="regEmail" name="email" placeholder="your@email.com" required>
-                        <div class="error" id="regEmailError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="regPhone">Phone *</label>
-                        <input type="tel" id="regPhone" name="phone" placeholder="10 digits" required>
-                        <div class="error" id="regPhoneError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="regPassword">Password *</label>
-                        <input type="password" id="regPassword" name="password" placeholder="Min 8 characters" required>
-                        <div class="error" id="regPasswordError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="confirmPass">Confirm Password *</label>
-                        <input type="password" id="confirmPass" name="confirmPassword" placeholder="Confirm your password" required>
-                        <div class="error" id="confirmPassError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="address">Address *</label>
-                        <textarea id="address" name="address" placeholder="Your address" rows="2" required></textarea>
-                        <div class="error" id="addressError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="city">City *</label>
-                        <input type="text" id="city" name="city" placeholder="City name" required>
-                        <div class="error" id="cityError"></div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="postalCode">Postal Code *</label>
-                        <input type="text" id="postalCode" name="postalCode" placeholder="5-6 digits" required>
-                        <div class="error" id="postalCodeError"></div>
-                    </div>
-                    
-                    <button type="submit">Register Account</button>
-                    <div id="registrationSuccess"></div>
-                </form>
+
+        <div class="env-note">
+            <div class="env-note-icon">⚙️</div>
+            <div class="env-note-text">
+                <strong>Environment Note — Why this is a static result page:</strong> This module requires a live Apache/PHP server to execute <code>.php</code> scripts. GitHub Pages only serves static HTML/CSS/JS files — it cannot interpret PHP. This exercise was <strong>successfully executed and verified on a Localhost XAMPP environment</strong>. The screenshots below document the step-by-step implementation logic and confirmed results.
             </div>
         </div>
     </div>
-    
-    <!-- Form Processing Script -->
-    <script>
-        /**
-         * Submit Contact Form to PHP Backend
-         */
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Create FormData object from form
-            const formData = new FormData(this);
-            
-            // Send to PHP processor via fetch API
-            fetch('process_personal_contact.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                // Handle response from PHP
-                if (data.success) {
-                    // Show success message
-                    document.getElementById('contactSuccess').innerHTML = 
-                        '<div class="success">✓ ' + data.message + '</div>';
-                    document.getElementById('contactForm').reset();
-                } else {
-                    // Display errors
-                    Object.keys(data.errors).forEach(field => {
-                        const errorElement = document.getElementById(field + 'Error');
-                        if (errorElement) {
-                            errorElement.textContent = '✗ ' + data.errors[field];
-                        }
-                    });
-                }
-            });
-        });
-        
-        /**
-         * Submit Registration Form to PHP Backend
-         */
-        document.getElementById('registrationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Create FormData object
-            const formData = new FormData(this);
-            formData.append('formType', 'registration');
-            
-            // Send to PHP processor
-            fetch('process_ecommerce_forms.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    document.getElementById('registrationSuccess').innerHTML = 
-                        '<div class="success">✓ ' + data.message + '</div>';
-                    document.getElementById('registrationForm').reset();
-                } else {
-                    // Display errors returned from PHP
-                    Object.keys(data.errors).forEach(field => {
-                        let errorFieldName = field;
-                        if (field === 'email') errorFieldName = 'regEmail';
-                        if (field === 'phone') errorFieldName = 'regPhone';
-                        if (field === 'password') errorFieldName = 'regPassword';
-                        if (field === 'confirmPassword') errorFieldName = 'confirmPass';
-                        
-                        const errorElement = document.getElementById(errorFieldName + 'Error');
-                        if (errorElement) {
-                            errorElement.textContent = '✗ ' + data.errors[field];
-                        }
-                    });
-                }
-            });
-        });
-        
-        // Clear errors on input focus
-        document.querySelectorAll('input, textarea').forEach(field => {
-            field.addEventListener('focus', function() {
-                const errorId = this.id || this.name;
-                const errorElement = document.getElementById(errorId + 'Error');
-                if (errorElement) {
-                    errorElement.textContent = '';
-                }
-            });
-        });
-    </script>
+
+    <div class="step-card">
+        <div class="step-header">
+            <div class="step-badge">1</div>
+            <div class="step-header-text">
+                <div class="step-title">Form UI — Contact &amp; Registration Forms</div>
+                <div class="step-subtitle">Frontend HTML forms styled and connected to PHP backend processors</div>
+            </div>
+        </div>
+        <div class="desc-box">
+            <p>Two forms were designed and rendered using PHP-served HTML. The <strong>Contact Form (Personal Website)</strong> captures Full Name, Email Address, 10-digit Phone Number, Subject, and Message. The <strong>E-Commerce Registration Form</strong> collects Full Name, Email, Phone, Password (with confirmation), Address, City, and Postal Code.</p>
+            <p>Both forms send data asynchronously via the browser's <code>fetch()</code> API to their respective PHP processors (<code>process_contact.php</code> and <code>process_ecommerce_forms.php</code>) using the <code>POST</code> HTTP method — meaning no page reload occurs on submission.</p>
+        </div>
+        <div class="screenshot-label">Screenshot — Step 1: Form Interface running on localhost</div>
+        <div class="img-single">
+            <img src="screenshots/step1.png" alt="Contact Form and Registration Form UI running on localhost via XAMPP">
+            <div class="img-caption">Fig 1.0 — Both forms rendered at localhost/WebTechLab/Ex-8-PHP-Forms/index.php with XAMPP Apache server active.</div>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <div class="step-header">
+            <div class="step-badge">2</div>
+            <div class="step-header-text">
+                <div class="step-title">Server-Side Validation — Regex &amp; Error Handling</div>
+                <div class="step-subtitle">PHP catches invalid input and returns structured JSON error messages</div>
+            </div>
+        </div>
+        <div class="desc-box">
+            <p>When the form is submitted, the PHP processor runs a multi-stage validation pipeline before processing any data. First, <code>sanitizeInput()</code> trims whitespace, strips slashes, and converts HTML entities via <code>htmlspecialchars()</code> to neutralize XSS attacks.</p>
+        </div>
+        <div class="screenshot-label">Screenshot — Step 2a: Browser-level HTML5 email format check</div>
+        <div class="img-single" style="margin-bottom:14px;">
+            <img src="screenshots/step2.png" alt="Browser tooltip showing email format validation — missing @ symbol">
+            <div class="img-caption">Fig 2.0 — Browser catches missing '@' in email field before form even reaches PHP. "cseaaryan.com" is missing an '@'.</div>
+        </div>
+        <div class="sub-step-divider">Step 2b — PHP Server-Side Validation</div>
+        <div class="screenshot-label">Screenshot — Step 2b: PHP regex validation — phone number error</div>
+        <div class="img-single">
+            <img src="screenshots/step2.1.png" alt="PHP server-side validation showing phone number error — must be exactly 10 digits">
+            <div class="img-caption">Fig 2.1 — PHP's <code>preg_match()</code> catches that "2345678" is only 7 digits. Error returned via JSON and displayed inline: "Phone must be exactly 10 digits".</div>
+        </div>
+    </div>
+
+    <div class="step-card">
+        <div class="step-header">
+            <div class="step-badge">3</div>
+            <div class="step-header-text">
+                <div class="step-title">Successful AJAX Submission — JSON Success Response</div>
+                <div class="step-subtitle">Valid, sanitized data processed by PHP returns a success confirmation without page reload</div>
+            </div>
+        </div>
+        <div class="desc-box">
+            <p>Once all validations pass (name ≥ 3 letters, valid email format, 10-digit phone, message 10–500 characters), the PHP processor enters the processing block. It creates a timestamped log entry and appends it to <code>contact_submissions.log</code> using <code>file_put_contents()</code>.</p>
+            <p>The PHP script then returns a JSON success response: <code>{"success": true, "message": "Your message has been sent successfully!"}</code>.</p>
+        </div>
+        <div class="screenshot-label">Screenshot — Step 3: PHP processes valid data and returns success</div>
+        <div class="img-single">
+            <img src="screenshots/step3.png" alt="Form showing green success message">
+            <div class="img-caption">Fig 3.0 — Green success banner appears below submit button: "✓ Thank you! Your message has been received. We will reply shortly."</div>
+        </div>
+        <div class="outcome-strip">Exercise 08 verified successfully on localhost (XAMPP). Both contact and registration forms validated, processed, and responded with correct JSON payloads.</div>
+    </div>
+
+    <div class="footer-nav">
+        <a href="../index.html" class="back-btn">← Back to Dashboard</a>
+        <a href="../Ex-9-PHP-MySQL/index.php" class="nav-next">Next: Ex-09 MySQL →</a>
+    </div>
+    <div class="footer-info">PahiranGo · Web Technology Lab Record · B.Tech CSE 2nd Year</div>
+</div>
 </body>
 </html>
