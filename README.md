@@ -1,4 +1,4 @@
-<img width="2137" height="563" alt="image" src="https://github.com/user-attachments/assets/3765f422-a725-4292-889d-b9ca9f77d250" /># Web Technology Lab 🌐
+# Web Technology Lab 🌐
 
 This repository contains my practical assignments and lab experiments for the **Web Technology** subject. It showcases fundamental frontend development skills and advanced server-side backend integration using **HTML5**, **CSS3**, **JavaScript**, **PHP**, and **MySQL**.
 
