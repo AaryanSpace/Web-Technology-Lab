@@ -15,6 +15,7 @@
                 <a href="about.html">About</a> &nbsp;|&nbsp;
                 <a href="education.html">Education</a> &nbsp;|&nbsp;
                 <a href="contact.html">Contact</a>
+                <a href="#" onclick="toggleCalculator(event)">Calculator</a>
 
                 &nbsp;&nbsp;&nbsp; <a href="https://www.linkedin.com/in/aaryan-sah-42181530b?" target="_blank" style="text-decoration:none; color:black;">
                     <i class="fab fa-linkedin"></i>
@@ -65,6 +66,23 @@
     <center>
         <p>&copy; 2026 Aaryan Sah. Designed with HTML.</p>
     </center>
+<div id="calcModal" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); z-index:1000; background:rgba(30, 41, 59, 0.9); padding:10px; border-radius:15px; box-shadow:0 0 20px rgba(255,255,255,0.15); width: 400px; max-width: 90%; transition: opacity 0.3s ease;">
+    <button onclick="toggleCalculator(event)" style="position:absolute; top: -15px; right: -15px; background:rgba(239, 68, 68, 0.85); color:white; border:2px solid rgba(239, 68, 68, 0.9); font-size: 20px; font-weight: bold; padding: 0; width: 35px; height: 35px; border-radius: 50%; cursor:pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(0,0,0,0.5); z-index: 1001;">✕</button>
+    <h3 style="color:white; margin-top:5px; text-align: center;">My Scientific Calculator</h3>
+    
+    <iframe src="../Ex-5-Calculator-JavaScript/ScientificCalculator/index.html" width="380" height="480" frameborder="0" style="border-radius:10px; border: none;"></iframe>
+</div>
 
+<script>
+    function toggleCalculator(event) {
+        if(event) event.preventDefault();
+        var modal = document.getElementById('calcModal');
+        if (modal.style.display === "none") {
+            modal.style.display = "block";
+        } else {
+            modal.style.display = "none";
+        }
+    }
+</script>
 </body>
 </html>

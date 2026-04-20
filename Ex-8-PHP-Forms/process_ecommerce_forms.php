@@ -2,21 +2,20 @@
 /**
  * ═══════════════════════════════════════════════════════════════
  * EXERCISE 8: PHP FORM HANDLING & VALIDATION
- * E-COMMERCE CONTACT FORM PROCESSOR
+ * E-COMMERCE LOGIN & REGISTRATION FORM PROCESSOR
  * ═══════════════════════════════════════════════════════════════
  * 
  * PURPOSE:
- * This script handles form submissions from the e-commerce website
- * including:
- * - Customer inquiries
- * - Order status checks
- * - Product feedback
- * - Server-side validation
- * - Security hardening
+ * Handles user authentication forms for e-commerce platform:
+ * - User registration with validation
+ * - User login authentication
+ * - Input sanitization and security hardening
  */
 
-// Set JSON response header
-header('Content-Type: application/json');
+// Enable CORS and set JSON header
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST');
+header('Content-Type: application/json; charset=utf-8');
 
 // Initialize response
 $response = [
@@ -58,42 +57,33 @@ function validatePhone($phone) {
 }
 
 /**
- * validateZipCode($zip)
- * 
- * Validates 5-6 digit postal code
+ * Validates password strength
+ * Requires: 8+ chars, 1 uppercase, 1 lowercase, 1 digit
  */
-function validateZipCode($zip) {
-    return preg_match('/^[0-9]{5,6}$/', $zip) === 1;
+function validatePassword($password) {
+    return strlen($password) >= 8 && 
+           preg_match('/[A-Z]/', $password) &&
+           preg_match('/[a-z]/', $password) &&
+           preg_match('/[0-9]/', $password);
 }
 
 // ═══════════════════════════════════════════════════════════════
-// FORM TYPE IDENTIFICATION AND PROCESSING
+// FORM PROCESSING BASED ON FORM TYPE
 // ═══════════════════════════════════════════════════════════════
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
-    // Get form type to determine which validation to apply
     $formType = isset($_POST['formType']) ? sanitizeInput($_POST['formType']) : '';
     $response['formType'] = $formType;
     
-    // PROCESS BASED ON FORM TYPE
     switch ($formType) {
         
         // ─────────────────────────────────────────────────────
-        // CUSTOMER INQUIRY FORM
+        // LOGIN FORM
         // ─────────────────────────────────────────────────────
-        case 'inquiry':
-            $name = isset($_POST['name']) ? sanitizeInput($_POST['name']) : '';
+        case 'login':
             $email = isset($_POST['email']) ? sanitizeInput($_POST['email']) : '';
-            $subject = isset($_POST['subject']) ? sanitizeInput($_POST['subject']) : '';
-            $inquiry = isset($_POST['inquiry']) ? sanitizeInput($_POST['inquiry']) : '';
-            
-            // Validate inquiry form
-            if (empty($name)) {
-                $response['errors']['name'] = 'Name is required';
-            } elseif (strlen($name) < 2) {
-                $response['errors']['name'] = 'Name must be at least 2 characters';
-            }
+            $password = isset($_POST['password']) ? $_POST['password'] : '';
             
             if (empty($email)) {
                 $response['errors']['email'] = 'Email is required';
@@ -101,109 +91,64 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $response['errors']['email'] = 'Invalid email address';
             }
             
-            if (empty($subject)) {
-                $response['errors']['subject'] = 'Subject is required';
+            if (empty($password)) {
+                $response['errors']['password'] = 'Password is required';
             }
             
-            if (empty($inquiry)) {
-                $response['errors']['inquiry'] = 'Please share your inquiry';
-            } elseif (strlen($inquiry) < 10) {
-                $response['errors']['inquiry'] = 'Inquiry must be at least 10 characters';
-            }
-            
-            // If valid, process inquiry
             if (empty($response['errors'])) {
+                // In production, verify against database
+                // For demo: accept valid email/password
                 $response['success'] = true;
-                $response['message'] = 'Thank you for contacting us! We will reply within 24 hours.';
-                error_log("Inquiry received from: $name ($email) - Subject: $subject");
+                $response['message'] = 'Login successful!';
+                // In Ex-10, this will set $_SESSION
             }
             break;
         
         // ─────────────────────────────────────────────────────
         // REGISTRATION FORM
         // ─────────────────────────────────────────────────────
-        case 'registration':
-            $fullName = isset($_POST['fullName']) ? sanitizeInput($_POST['fullName']) : '';
+        case 'register':
+            $name = isset($_POST['name']) ? sanitizeInput($_POST['name']) : '';
             $email = isset($_POST['email']) ? sanitizeInput($_POST['email']) : '';
-            $phone = isset($_POST['phone']) ? sanitizeInput($_POST['phone']) : '';
             $password = isset($_POST['password']) ? $_POST['password'] : '';
             $confirmPassword = isset($_POST['confirmPassword']) ? $_POST['confirmPassword'] : '';
-            $address = isset($_POST['address']) ? sanitizeInput($_POST['address']) : '';
-            $city = isset($_POST['city']) ? sanitizeInput($_POST['city']) : '';
-            $postalCode = isset($_POST['postalCode']) ? sanitizeInput($_POST['postalCode']) : '';
             
-            // Validate registration form
-            if (empty($fullName) || strlen($fullName) < 3) {
-                $response['errors']['fullName'] = 'Valid name required';
+            if (empty($name)) {
+                $response['errors']['name'] = 'Full name is required';
+            } elseif (strlen($name) < 3) {
+                $response['errors']['name'] = 'Name must be at least 3 characters';
             }
             
-            if (empty($email) || !validateEmail($email)) {
-                $response['errors']['email'] = 'Valid email required';
+            if (empty($email)) {
+                $response['errors']['email'] = 'Email is required';
+            } elseif (!validateEmail($email)) {
+                $response['errors']['email'] = 'Invalid email address';
             }
             
-            if (empty($phone) || !validatePhone($phone)) {
-                $response['errors']['phone'] = 'Valid 10-digit phone required';
-            }
-            
-            if (empty($password) || strlen($password) < 8) {
-                $response['errors']['password'] = 'Password must be at least 8 characters';
+            if (empty($password)) {
+                $response['errors']['password'] = 'Password is required';
+            } elseif (!validatePassword($password)) {
+                $response['errors']['password'] = 'Password must have 8+ chars, 1 uppercase, 1 lowercase, 1 digit';
             }
             
             if ($password !== $confirmPassword) {
                 $response['errors']['confirmPassword'] = 'Passwords do not match';
             }
             
-            if (empty($address) || strlen($address) < 10) {
-                $response['errors']['address'] = 'Valid address required';
-            }
-            
-            if (empty($city)) {
-                $response['errors']['city'] = 'City is required';
-            }
-            
-            if (empty($postalCode) || !validateZipCode($postalCode)) {
-                $response['errors']['postalCode'] = 'Valid 5-6 digit postal code required';
-            }
-            
-            // Process registration if valid
             if (empty($response['errors'])) {
-                // Hash password for security using bcrypt
-                $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
-                
+                // In production, save to database with hashed password
+                // password_hash($password, PASSWORD_DEFAULT)
                 $response['success'] = true;
-                $response['message'] = 'Registration successful! You can now log in.';
-                
-                // In production, store in database:
-                // INSERT INTO users (fullName, email, phone, password, address, city, postalCode)
-                // VALUES ($fullName, $email, $phone, $hashedPassword, $address, $city, $postalCode)
-                
-                error_log("New registration: $fullName ($email)");
-            }
-            break;
-        
-        // ─────────────────────────────────────────────────────
-        // NEWSLETTER SUBSCRIPTION
-        // ─────────────────────────────────────────────────────
-        case 'newsletter':
-            $email = isset($_POST['email']) ? sanitizeInput($_POST['email']) : '';
-            
-            if (empty($email)) {
-                $response['errors']['email'] = 'Email is required';
-            } elseif (!validateEmail($email)) {
-                $response['errors']['email'] = 'Invalid email address';
-            } else {
-                $response['success'] = true;
-                $response['message'] = 'Successfully subscribed to our newsletter!';
-                error_log("Newsletter subscription: $email");
+                $response['message'] = 'Registration successful! You can now login.';
             }
             break;
         
         default:
-            $response['message'] = 'Unknown form type';
+            $response['errors']['form'] = 'Unknown form type';
     }
     
 } else {
-    $response['message'] = 'Invalid request method';
+    $response['errors']['form'] = 'Invalid request method';
 }
 
 // Send JSON response back to client

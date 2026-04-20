@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | PahiranGo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .form-error { color: #dc2626; font-size: 0.9em; margin-top: 4px; }
+        .form-success { color: #10b981; font-weight: 600; text-align: center; padding: 12px; background: #ecfdf5; border-radius: 6px; margin-bottom: 15px; }
+        .form-group { position: relative; margin-bottom: 18px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; color: #333; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-family: inherit; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
+        .register-box { background: white; padding: 35px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); max-width: 450px; margin: 40px auto; }
+        .register-box h2 { margin-bottom: 25px; color: #333; text-align: center; }
+        .register-box button { width: 100%; padding: 12px; background: #667eea; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer; font-weight: 600; }
+        .register-box button:hover { background: #764ba2; }
+        .register-box button:disabled { background: #ccc; cursor: not-allowed; }
+        .login-link { text-align: center; margin-top: 15px; }
+        .login-link a { color: #667eea; text-decoration: none; font-weight: 600; }
+        .login-link a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<!-- NAVBAR (same as other pages) -->
+<header class="site-header">
+  <div class="navbar">
+    <div class="nav-left">
+      <a href="index.html" class="logo">
+        <img src="images/logo-dark.png" alt="PahiranGo">
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Shop</a>
+        <a href="women.html">Women</a>
+        <a href="men.html">Men</a>
+        <a href="cosmetics.html">Cosmetics</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <div class="search-container">
+        <input type="text" placeholder="Search Product">
+        <button>🔍</button>
+      </div>
+      <a href="cart.html" class="cart">🛒 <span>Cart</span></a>
+      <a href="login.html" class="login">👤 <span>Login</span></a>
+      <select class="language">
+        <option>EN🌐</option>
+        <option>NE🌐</option>
+      </select>
+    </div>
+  </div>
+</header>
+
+<!-- REGISTRATION SECTION -->
+<main class="register-section">
+    <div class="register-box">
+        <h2>Create Account</h2>
+        
+        <form id="registerForm">
+            <div id="successMessage" class="form-success" style="display:none;"></div>
+            
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                <span class="form-error" id="nameError"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                <span class="form-error" id="emailError"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Min 8 chars, 1 uppercase, 1 number" required>
+                <span class="form-error" id="passwordError"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required>
+                <span class="form-error" id="confirmPasswordError"></span>
+            </div>
+            
+            <button type="submit" id="submitBtn">Create Account</button>
+            
+            <div class="login-link">
+                Already have an account? <a href="login.html">Login here</a>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script>
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Clear previous errors
+        document.querySelectorAll('.form-error').forEach(el => el.textContent = '');
+        document.getElementById('successMessage').style.display = 'none';
+        
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Creating Account...';
+        
+        const formData = new FormData(e.target);
+        formData.append('formType', 'register');
+        
+        try {
+            const response = await fetch('http://aaryansah.my-style.in/pahirango/process_ecommerce_forms.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                document.getElementById('successMessage').textContent = '✓ ' + data.message;
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('registerForm').reset();
+                setTimeout(() => window.location.href = 'login.html', 2000);
+            } else {
+                for (const [field, message] of Object.entries(data.errors)) {
+                    const errorEl = document.getElementById(field + 'Error');
+                    if (errorEl) errorEl.textContent = '❌ ' + message;
+                }
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Network error. Please try again.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Create Account';
+        }
+    });
+</script>
+
+</body>
+</html>
