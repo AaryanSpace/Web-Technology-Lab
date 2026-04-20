@@ -66,4 +66,4 @@ State management across multiple HTTP requests.
 3. For Backend (Ex 8-10): These modules require a PHP/MySQL server. Place the repository inside the htdocs folder of an active XAMPP/Apache environment and run via http://localhost/.... Detailed execution results and screenshots are provided inside each backend folder for reference.
 
 ---
-*Created by AaryanSpace for Web Technology Lab Record.*
+*Created by AaryanSpace.*
