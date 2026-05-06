@@ -60,7 +60,7 @@ State management across multiple HTTP requests.
 
 ### 🌐 View Live Project (Recommended)
 Click the link below to view the fully deployed Lab Record and execution results:
-👉 **[Open Web Tech Lab](https://aaryanspace.github.io/Web-Technology-Lab/)**
+👉 **[Open Web Tech Lab](https://aaryanspace.github.io/WebTechLab/)**
 
 ### 💻 Run Locally (For Developers)
 1. Clone the repository:
